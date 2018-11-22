@@ -3,7 +3,8 @@ A REdis Serialization Protocol(RESP) codec component based on netty-4.1.x.
 
 # quick start:
 ### RedisServer.java
-```import com.github.fmjsjx.netty.codec.redis.RedisMessageEncoder;
+```java
+import com.github.fmjsjx.netty.codec.redis.RedisMessageEncoder;
 import com.github.fmjsjx.netty.codec.redis.RedisRequestDecoder;
 ...
 
@@ -32,7 +33,8 @@ public class RedisServer {
 ```
 
 ### RedisServerHandler.java
-```import com.github.fmjsjx.netty.codec.redis.RedisRequest;
+```java
+import com.github.fmjsjx.netty.codec.redis.RedisRequest;
 import com.github.fmjsjx.netty.codec.redis.RedisResponses;
 import com.github.fmjsjx.netty.codec.redis.RedisServerHandlerAdapter;
 ...
