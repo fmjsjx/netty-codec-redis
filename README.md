@@ -2,13 +2,13 @@
 A REdis Serialization Protocol(RESP) codec component based on netty-4.1.x.
 
 # quick start:
-### RedisServer.java
+RESPServer.java
 ```java
 import com.github.fmjsjx.netty.codec.redis.RedisMessageEncoder;
 import com.github.fmjsjx.netty.codec.redis.RedisRequestDecoder;
 ...
 
-public class RedisServer {
+public class RESPServer {
 ...
     public static void main(String[] args) throw Exception {
         NioEventLoopGroup group = new NioEventLoopGroup(1);
@@ -19,7 +19,7 @@ public class RedisServer {
                 @Override
                 protected void initChannel(SocketChannel ch) throws Exception {
                     ch.pipeline().addLast(new ReadTimeoutHandler(300), new RedisRequestDecoder(), redisMessageEncoder,
-                        new RedisServerHandler());
+                        new RESPServerHandler());
                 }
             }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.TCP_NODELAY, true);
             ChannelFuture future = b.bind(address).sync();
@@ -32,14 +32,14 @@ public class RedisServer {
 }
 ```
 
-### RedisServerHandler.java
+### RESPServerHandler.java
 ```java
 import com.github.fmjsjx.netty.codec.redis.RedisRequest;
 import com.github.fmjsjx.netty.codec.redis.RedisResponses;
 import com.github.fmjsjx.netty.codec.redis.RedisServerHandlerAdapter;
 ...
 
-public class RedisServerHandler extands RedisServerHandlerAdapter {
+public class RESPServerHandler extands RedisServerHandlerAdapter {
 ...
     // Implements redis command SET
     @Override
